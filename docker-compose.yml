@@ -1,0 +1,31 @@
+
+
+version: "3.3"
+services:
+  aplicacion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 7000:80
+    environment:
+      - DB_IP=192.168.1.10
+      - DB_USER=usuario
+      - DB_PASSWORD=1234
+      - DB_NAME=basesita
+  aplicacion2:
+    image: php:8.2-apache
+    tty: true
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 7001:80
+    environment:
+      - DB_IP=10.0.0.10
+      - DB_USER=pepe
+      - DB_PASSWORD=1234
+      - DB_NAME=basesita
+
+
+
